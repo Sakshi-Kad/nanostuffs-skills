@@ -11,6 +11,7 @@ Claude Skills and agents built from our delivery and pre-sales work.
 | `incident-rca` | Root cause analysis for a production incident |
 | `project-handover-brief` | HANDOVER.md + CLAUDE.md for a project or POC |
 | `nanostuffs-code-review` | Code review against our React / React Native / Node.js standards |
+| `cross-layer-impact-mapper` | Impact report tracing a change across frontend, backend, API, DB, permissions, integrations, and tests |
 
 ## Use the skills
 
@@ -29,6 +30,19 @@ npm run research -- "Company Name"
 ```
 
 The brief is written to `briefs/<company>.md`.
+
+## Run the change-impact-auditor agent
+
+```bash
+npm install
+export ANTHROPIC_API_KEY=sk-ant-...
+npm run audit -- "Add discount field to the orders table"
+
+# With a git diff
+npm run audit -- "Fix null crash in invoice service" --diff "$(git diff main...HEAD)"
+```
+
+The impact report is written to `impact-reports/<slug>.md`.
 
 ## Add a skill
 
